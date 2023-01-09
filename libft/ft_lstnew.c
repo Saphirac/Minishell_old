@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maparigi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/09 15:12:27 by maparigi         ###   ########.fr       */
+/*   Created: 2021/12/09 23:14:01 by maparigi          #+#    #+#             */
+/*   Updated: 2021/12/10 05:19:44 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "libft.h"
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*nel;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-#endif
+	nel = (t_list *)malloc(sizeof(t_list) * 1);
+	if (!nel)
+		return (NULL);
+	nel->content = content;
+	nel->next = NULL;
+	return (nel);
+}

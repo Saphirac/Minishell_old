@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maparigi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/09 15:12:27 by maparigi         ###   ########.fr       */
+/*   Created: 2021/11/25 16:22:00 by maparigi          #+#    #+#             */
+/*   Updated: 2021/11/25 16:22:37 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "libft.h"
-
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-#endif
+int	ft_tolower(int c)
+{
+	if (c > 64 && c < 91)
+		c += 32;
+	return (c);
+}

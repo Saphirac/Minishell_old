@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maparigi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/09 15:12:27 by maparigi         ###   ########.fr       */
+/*   Created: 2021/12/03 14:40:38 by maparigi          #+#    #+#             */
+/*   Updated: 2021/12/04 16:18:34 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "libft.h"
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	size_t	i;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-#endif
+	if (!s)
+		return ;
+	i = -1;
+	while (s[++i])
+		f(i, s + i);
+	return ;
+}

@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/09 15:12:27 by maparigi         ###   ########.fr       */
+/*   Created: 2021/12/10 09:17:13 by maparigi          #+#    #+#             */
+/*   Updated: 2021/12/10 23:24:03 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "libft.h"
+void	ft_lstadd_back(t_list **alst, t_list *new)
+{
+	t_list	*tmp;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-#endif
+	if (alst)
+	{
+		if (*alst)
+		{
+			tmp = ft_lstlast(*alst);
+			tmp->next = new;
+		}
+		else
+			*alst = new;
+	}
+}

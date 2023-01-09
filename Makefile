@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
+#    By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/01/09 13:44:30 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/01/09 15:10:34 by maparigi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,14 +41,19 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	mkdir -p ${OBJ_DIR}
 	${CC} -g3 ${FLAGS} ${LDFLAGS} -I${INC} -c $< -o $@
 
+libft:
+	make -C libft
+
 all:    ${NAME}
 
 clean:
 	rm -rf ${OBJ_DIR}
+	@make -C libft clean
 
 fclean: clean
 	rm -f ${NAME}
+	@make -C libft fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft
