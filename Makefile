@@ -6,7 +6,7 @@
 #    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/01/09 13:31:26 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/01/09 13:44:30 by mcourtoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ OBJSMAIN := $(addprefix $(OBJ_DIR)/, $(OBJSMAIN))
 INC = ./includes
 
 FLAGS = -Wall -Wextra -Werror -MMD -MP
+LDFLAGS = -lreadline
 
 ${NAME}:    ${OBJS} ${OBJSMAIN}
 	    ${CC} ${OBJS} ${OBJSMAIN} -o ${NAME}
@@ -38,7 +39,7 @@ ${NAME}:    ${OBJS} ${OBJSMAIN}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	mkdir -p ${OBJ_DIR}
-	${CC} -g3 ${FLAGS} -I${INC} -c $< -o $@
+	${CC} -g3 ${FLAGS} ${LDFLAGS} -I${INC} -c $< -o $@
 
 all:    ${NAME}
 
