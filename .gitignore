@@ -51,3 +51,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Linux auto-generated files
+.nfs*
+
+# Other
+.vscode*
