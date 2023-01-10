@@ -6,13 +6,16 @@
 #    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/01/10 01:57:47 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/01/10 05:08:34 by mcourtoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = cc
+
+LIBFT_PATH = ./libft
+LIBFT = ${LIBFT_PATH}/libft.a
 
 SRC_DIR = srcs
 OBJ_DIR = objs
@@ -28,8 +31,8 @@ INC = ./includes
 FLAGS = -Wall -Wextra -Werror
 LDFLAGS = -lreadline
 
-${NAME}:    ${OBJS}
-	    ${CC} ${OBJS} -lreadline -o ${NAME}
+${NAME}:    libft ${OBJS}
+	    ${CC} ${OBJS} ${LIBFT} -lreadline -o ${NAME}
 
 -include ${OBJ_DIR}/*.d
 
