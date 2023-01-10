@@ -6,7 +6,7 @@
 #    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/01/10 00:51:12 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/01/10 01:57:47 by mcourtoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CC = cc
 SRC_DIR = srcs
 OBJ_DIR = objs
 
-SRCS =	main.c
+SRCS =	main.c \
+		signals.c
 
 OBJS = ${SRCS:.c=.o}
 OBJS := $(addprefix $(OBJ_DIR)/, $(OBJS))
