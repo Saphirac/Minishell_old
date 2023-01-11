@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/10 05:33:55 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:35:45 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-int	g_exit_code = 0;
+int g_exit_code = 0;
 
 void prompt(t_shell *shell)
 {
@@ -22,17 +22,18 @@ void prompt(t_shell *shell)
 	if (!shell->line)
 	{
 		write(STDOUT_FILENO, "exit\n", 5);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	if (ft_strlen(shell->line))
 		add_history(shell->line);
+	printf("nb tokens : %d\n", count_tokens(shell->line));
 	free(shell->line);
 }
 
-int	main(void)
+int main(void)
 {
-	t_shell	shell;
-	
+	t_shell shell;
+
 	while (1)
 	{
 		signal_handle_interactive();
