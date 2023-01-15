@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:35:35 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/11 17:07:30 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:20:23 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	count_tokens(char *str)
 	nb_tokens = 0;
 	while (str[i])
 	{
-		printf("prout");
 		while (str[i] && str[i] == ' ')
 			i++;
 		if (str[i] == ' ')
@@ -31,20 +30,27 @@ int	count_tokens(char *str)
 		while (str[i] && str[i] != ' ' && str[i] != '"' && str[i] != 39)
 			i++;
 		if (str[i] == ' ' || str[i] == '\0')
+		{
+			printf("yo\n");
 			nb_tokens++;
+		}
 		if (str[i] == '"')
+		{
+			i++;
+			if (str[i] == '"')
+				nb_tokens++;
 			while (str[i] && str[i] != '"')
 			{
 				i++;
-				printf("here\n");
 				if (str[i] == '"')
 				{
+					printf("here\n");
 					nb_tokens++;
-					//i++;
-					break;
+					//break;
 				}
 			}
-		
+		}
+		i++;
 	}
 	return (nb_tokens);
 }
