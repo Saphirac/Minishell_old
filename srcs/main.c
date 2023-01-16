@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/11 12:35:45 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 05:19:42 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-int g_exit_code = 0;
+int	g_exit_code = 0;
 
-void prompt(t_shell *shell)
+void	prompt(t_shell *shell)
 {
 	shell->line = readline("minishell $> ");
 	if (!shell->line)
@@ -30,10 +30,12 @@ void prompt(t_shell *shell)
 	free(shell->line);
 }
 
-int main(void)
+int	main(int ac, char **av)
 {
-	t_shell shell;
-
+	t_shell	shell;
+	
+	(void)ac;
+	(void)av;
 	while (1)
 	{
 		signal_handle_interactive();
