@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:35:35 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/31 19:50:27 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/01/29 03:09:44 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,10 @@ int	count_tokens(char *str)
 		if (str[i] == ' ')
 			nb_tokens++;
 		if (count_quotes(str, i) > 0)
-			(nb_tokens++, i += count_quotes(str, i));
+			nb_tokens++;
 		else if (count_quotes(str, i) < 0)
 			return (printf("Error : Invalid syntax.\n"), -1);
+		i += count_quotes(str, i);
 	}
 	return (nb_tokens);
 }

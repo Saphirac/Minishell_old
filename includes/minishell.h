@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/31 19:29:48 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/01/29 04:22:50 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ typedef struct s_shell
 {
 	char	*line;
 	char	**tokens;
+	int		finished;
 }	t_shell;
 
 void	handle_signal(int sig);
 void	signal_handle_interactive(void);
 void	signal_handle_non_interactive(void);
 int		count_tokens(char *str);
-
+int		count_quotes(char *str, int i);
+char	**tokens_tab(t_shell *shell);
 
 #endif
