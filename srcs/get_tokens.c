@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:35:35 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/30 05:23:36 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:50:27 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	count_quotes(char *str, int i)
 int	count_tokens(char *str)
 {
 	int	i;
-	int nb_tokens;
+	int	nb_tokens;
 
 	i = 0;
 	nb_tokens = 0;
@@ -85,7 +85,7 @@ int	count_tokens(char *str)
 			i++;
 		if (!str[i])
 			return (nb_tokens);
-		while (str[i] != ' ' && str[i] != '"' && str[i] != '\''  && str[i])
+		while (str[i] != ' ' && str[i] != '"' && str[i] != '\'' && str[i])
 			i++;
 		if (!str[i])
 			return (nb_tokens + 1);
@@ -94,10 +94,7 @@ int	count_tokens(char *str)
 		if (count_quotes(str, i) > 0)
 			(nb_tokens++, i += count_quotes(str, i));
 		else if (count_quotes(str, i) < 0)
-		{
-			printf("Error : Invalid syntax.\n");
-			return (-1);
-		}
+			return (printf("Error : Invalid syntax.\n"), -1);
 	}
 	return (nb_tokens);
 }
