@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 05:28:05 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/29 04:26:22 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:33:25 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,56 +26,33 @@ char	*cp_token(char *tokens, char *str, int i, int j)
 	return (tokens);
 }
 
-int	sub_tokens(t_shell *shell, int i, int j)
+int	sub_tokens(t_shell *shell, int i, int j, int k)
 {
-	static int	k = 0;
-
-	if (shell->finished == 1)
-	{
-		shell->tokens[k] = NULL;
-		k = 0;
-		return (0);
-	}
 	if (!shell->line[j] || shell->line[j] == ' ')
 	{
 		shell->tokens[k] = cp_token(shell->tokens[k], shell->line, i, j);
 		if (!shell->tokens[k])
 			return (-1);
-		k++;
+		return (k + 1);
 	}
 	if (count_quotes(shell->line, j) > 0)
 	{
-		printf("count_quotes = %d", count_quotes(shell->line, j));
 		j += count_quotes(shell->line, j);
 		shell->tokens[k] = cp_token(shell->tokens[k], shell->line, i, j);
 		if (!shell->tokens[k])
 			return (-3);
 		k++;
 	}
-	return (0);
+	return (k);
 }
 
-void	test_tab(t_shell *shell)
+char	**tokens_tab(t_shell *shell, int i)
 {
-	int	i;
-
-	i = 0;
-	while (shell->tokens[i])
-	{
-		printf("token %d : %s\n", i, shell->tokens[i]);
-		i++;
-	}
-}
-
-char	**tokens_tab(t_shell *shell)
-{
-	int		i;
 	int		j;
+	int		k;
 
-	i = 0;
-	if (count_tokens(shell->line) == 0)
-		return (NULL);
-	shell->tokens = malloc(sizeof(char *) * count_tokens(shell->line) + 1);
+	k = 0;
+	shell->tokens = malloc(sizeof(char *) * (count_tokens(shell->line) + 1));
 	if (!shell->tokens)
 		return (NULL);
 	while (shell->line[i])
@@ -88,10 +65,11 @@ char	**tokens_tab(t_shell *shell)
 		while (shell->line[j] != ' ' && shell->line[j] != '"'
 			&& shell->line[j] != '\'' && shell->line[j])
 			j++;
-		if (sub_tokens(shell, i, j) != 0)
+		k = sub_tokens(shell, i, j, k);
+		if (k < 0)
 			return (NULL);
-		i += (j + count_quotes(shell->line, j));
+		i = (j + count_quotes(shell->line, j));
 	}
-	test_tab(shell);
+	shell->tokens[count_tokens(shell->line)] = NULL;
 	return (shell->tokens);
 }

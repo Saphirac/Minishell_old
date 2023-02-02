@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/29 04:23:06 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:32:47 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ void	free_tab(char **tab)
 	free(tab);
 }
 
+void	test_tab(t_shell *shell)
+{
+	int	i;
+
+	i = 0;
+	while (shell->tokens[i])
+	{
+		printf("token %d : %s\n", i, shell->tokens[i]);
+		i++;
+	}
+}
+
 void	prompt(t_shell *shell)
 {
 	shell->finished = 0;
@@ -40,9 +52,10 @@ void	prompt(t_shell *shell)
 	}
 	if (ft_strlen(shell->line))
 		add_history(shell->line);
-	printf("nb tokens : %d\n", count_tokens(shell->line));
-	shell->tokens = tokens_tab(shell);
-	//free_tab(shell->tokens);
+	if (count_tokens(shell->line) > 0)
+		shell->tokens = tokens_tab(shell, 0);
+	test_tab(shell);
+	free_tab(shell->tokens);
 	free(shell->line);
 }
 
