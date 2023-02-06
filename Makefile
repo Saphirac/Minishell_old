@@ -6,7 +6,7 @@
 #    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/01/11 14:04:04 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/01/30 05:27:44 by mcourtoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ OBJ_DIR = objs
 
 SRCS =	main.c \
 		signals.c \
-		get_tokens.c
+		get_tokens.c \
+		classify_tokens.c
 
 OBJS = ${SRCS:.c=.o}
 OBJS := $(addprefix $(OBJ_DIR)/, $(OBJS))
