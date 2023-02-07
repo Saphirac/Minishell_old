@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/02 18:32:47 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:59:49 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,32 @@
 
 int	g_exit_code = 0;
 
-void	free_tab(char **tab)
+void	test_tab(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (str[i])
 	{
-		free(tab[i]);
+		printf("token %d : %s\n", i, str[i]);
 		i++;
 	}
-	free(tab);
 }
 
-void	test_tab(t_shell *shell)
+char    **mini_env(void)
 {
-	int	i;
+    char    **env;
 
-	i = 0;
-	while (shell->tokens[i])
-	{
-		printf("token %d : %s\n", i, shell->tokens[i]);
-		i++;
-	}
+    env = malloc(sizeof(char *) * 4);
+    env[0] = ft_strdup("PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
+    env[1] = ft_strdup("PWD=/Users/minishell");
+    env[2] = ft_strdup("_=/usr/bin/env");
+    env[3] = NULL;
+    return (env);
 }
 
 void	prompt(t_shell *shell)
 {
-	shell->finished = 0;
 	shell->line = readline("minishell $> ");
 	if (!shell->line)
 	{
@@ -54,17 +52,18 @@ void	prompt(t_shell *shell)
 		add_history(shell->line);
 	if (count_tokens(shell->line) > 0)
 		shell->tokens = tokens_tab(shell, 0);
-	test_tab(shell);
-	free_tab(shell->tokens);
+	test_tab(get_commands(shell));
+	ft_free(shell->tokens);
 	free(shell->line);
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **env)
 {
 	t_shell	shell;
 
 	(void)ac;
 	(void)av;
+	shell.env = env;
 	while (1)
 	{
 		signal_handle_interactive();
