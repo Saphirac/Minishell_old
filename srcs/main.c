@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/06 17:59:49 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:52:12 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char    **mini_env(void)
 
 void	prompt(t_shell *shell)
 {
+	char	**cmd;
+
 	shell->line = readline("minishell $> ");
 	if (!shell->line)
 	{
@@ -52,7 +54,8 @@ void	prompt(t_shell *shell)
 		add_history(shell->line);
 	if (count_tokens(shell->line) > 0)
 		shell->tokens = tokens_tab(shell, 0);
-	test_tab(get_commands(shell));
+	cmd = get_commands(shell);
+	test_tab(cmd);
 	ft_free(shell->tokens);
 	free(shell->line);
 }
