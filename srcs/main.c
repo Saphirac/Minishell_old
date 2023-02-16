@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/15 19:52:12 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:54:24 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	test_tab(char **str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return ;
 	while (str[i])
 	{
 		printf("token %d : %s\n", i, str[i]);
@@ -58,6 +60,7 @@ void	prompt(t_shell *shell)
 	test_tab(cmd);
 	ft_free(shell->tokens);
 	free(shell->line);
+	free(cmd);
 }
 
 int	main(int ac, char **av, char **env)

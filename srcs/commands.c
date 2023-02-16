@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:53:18 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/15 19:49:56 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:58:17 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,13 @@ char	**get_commands(t_shell *shell)
 	int		cmd;
 	int		tmp;
 
-	printf("test1\n");
 	cmd = cmd_is(shell->env, shell->tokens);
-	printf("cmd : %d\n", cmd);
 	if (cmd >= 0)
 		tmp = 1;
 	else
 		return (NULL);
-	printf("test3\n");
 	if (shell->tokens[cmd + 1] && shell->tokens[cmd + 1][0] == '-')
 		tmp = 2;
-	printf("test4\n");
 	return_commands = malloc(sizeof(char *) * tmp + 1);
 	return_commands[0] = ft_strdup(shell->tokens[cmd]);
 	if (tmp > 1)
