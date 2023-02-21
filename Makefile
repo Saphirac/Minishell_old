@@ -6,7 +6,7 @@
 #    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/02/06 18:00:37 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/02/22 00:07:21 by mcourtoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS =	main.c \
 		get_tokens.c \
 		classify_tokens.c \
 		commands.c \
-		utils.c
+		utils.c \
+		expand_tokens.c
 
 OBJS = ${SRCS:.c=.o}
 OBJS := $(addprefix $(OBJ_DIR)/, $(OBJS))

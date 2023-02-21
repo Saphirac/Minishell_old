@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/06 17:59:41 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/22 00:03:47 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ int		count_tokens(char *str);
 int		count_quotes(char *str, int i);
 char	**tokens_tab(t_shell *shell, int i);
 char	**get_commands(t_shell *shell);
+char	*expand_single_quotes(char *token);
+char	*expand_double_quotes(t_shell *shell, char *token);
+char	*search_env(char **env, char *token);
+char	*expand_dollar(char *token, char *tmp);
 
 // Utils //
 void	ft_free(char **tab);

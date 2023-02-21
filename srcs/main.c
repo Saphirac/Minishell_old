@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/21 02:31:41 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/22 00:39:02 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	test_tab(char **str)
 
 char	**mini_env(void)
 {
-    char	**env;
+	char	**env;
 
 	env = malloc(sizeof(char *) * 4);
 	env[0] = ft_strdup("PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
@@ -44,7 +44,7 @@ char	**mini_env(void)
 
 void	prompt(t_shell *shell)
 {
-	char	**cmd;
+	char	*tmp;
 
 	shell->line = readline("minishell $> ");
 	if (!shell->line)
@@ -56,11 +56,12 @@ void	prompt(t_shell *shell)
 		add_history(shell->line);
 	if (count_tokens(shell->line) > 0)
 		shell->tokens = tokens_tab(shell, 0);
-	cmd = get_commands(shell);
-	test_tab(cmd);
+	tmp = search_env(shell->env, shell->tokens[1]);
+	if (tmp)
+		printf("%s\n", expand_dollar(shell->tokens[1], tmp));
 	ft_free(shell->tokens);
+	free(tmp);
 	free(shell->line);
-	free(cmd);
 }
 
 int	main(int ac, char **av, char **env)
@@ -70,7 +71,6 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	shell.env = env;
-	printf("env[0] : %s\n", env[0]);
 	while (1)
 	{
 		signal_handle_interactive();
