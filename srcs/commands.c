@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:53:18 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/16 15:58:17 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/21 02:32:10 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ char	*check_access(char **env, char *cmd)
 	return (str);
 }
 
-int    cmd_is(char **env, char **tokens)
+int	cmd_is(char **env, char **tokens)
 {
-    int        i;
-    char    *buffer;
+	int		i;
+	char	*buffer;
 
-    i = -1;
+	i = -1;
 	buffer = NULL;
-    while (buffer == NULL && tokens[++i])
+	while (buffer == NULL && tokens[++i])
 		buffer = check_access(env, tokens[i]);
-    if (!buffer)
-        return (-2);
-    free(buffer);
-    return (i);
+	if (!buffer)
+		return (-2);
+	free(buffer);
+	return (i);
 }
 
 char	**get_commands(t_shell *shell)
@@ -60,7 +60,7 @@ char	**get_commands(t_shell *shell)
 	return_commands = malloc(sizeof(char *) * tmp + 1);
 	return_commands[0] = ft_strdup(shell->tokens[cmd]);
 	if (tmp > 1)
-		return_commands[1] = ft_strdup(shell->tokens[cmd  + 1]);
+		return_commands[1] = ft_strdup(shell->tokens[cmd + 1]);
 	return_commands[tmp] = NULL;
 	return (return_commands);
 }

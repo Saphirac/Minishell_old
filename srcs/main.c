@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/16 15:54:24 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/21 02:31:41 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ void	test_tab(char **str)
 	}
 }
 
-char    **mini_env(void)
+char	**mini_env(void)
 {
-    char    **env;
+    char	**env;
 
-    env = malloc(sizeof(char *) * 4);
-    env[0] = ft_strdup("PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
-    env[1] = ft_strdup("PWD=/Users/minishell");
-    env[2] = ft_strdup("_=/usr/bin/env");
-    env[3] = NULL;
-    return (env);
+	env = malloc(sizeof(char *) * 4);
+	env[0] = ft_strdup("PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
+	env[1] = ft_strdup("PWD=/Users/minishell");
+	env[2] = ft_strdup("_=/usr/bin/env");
+	env[3] = NULL;
+	return (env);
 }
 
 void	prompt(t_shell *shell)
@@ -70,6 +70,7 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	shell.env = env;
+	printf("env[0] : %s\n", env[0]);
 	while (1)
 	{
 		signal_handle_interactive();

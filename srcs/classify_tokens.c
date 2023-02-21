@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 05:28:05 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/02 18:33:25 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/18 23:15:19 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*cp_token(char *tokens, char *str, int i, int j)
 	int	k;
 
 	k = 0;
-	tokens = malloc(sizeof(char) * (j - i) + 1);
+	tokens = malloc(sizeof(char) * ((j - i) + 1));
 	if (!tokens)
 		return (NULL);
 	while (i < j && str[i])
