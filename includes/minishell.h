@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: red <red@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/02 18:28:59 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:17:16 by red              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_H
 
 # include "libft.h"
+# include "builtins.h"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -30,6 +31,7 @@ typedef struct s_shell
 	int		finished;
 }	t_shell;
 
+void	free_tab(char **tab);
 void	handle_signal(int sig);
 void	signal_handle_interactive(void);
 void	signal_handle_non_interactive(void);

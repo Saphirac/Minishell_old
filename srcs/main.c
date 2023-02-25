@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: red <red@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/02 18:32:47 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:54:40 by red              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,21 @@ void	prompt(t_shell *shell)
 	free(shell->line);
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **env)
 {
 	t_shell	shell;
+	char	**new_env;
 
 	(void)ac;
 	(void)av;
-	while (1)
-	{
-		signal_handle_interactive();
-		prompt(&shell);
-	}
+	(void)env;
+	(void)shell;
+	(void)new_env;
+	my_pwd();
+	//while (1)
+	//{
+	//	signal_handle_interactive();
+	//	prompt(&shell);
+	//}
 	return (0);
 }

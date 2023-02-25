@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
+#    By: red <red@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/01/30 05:27:44 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/02/25 17:12:41 by red              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,16 @@ LIBFT = ${LIBFT_PATH}/libft.a
 SRC_DIR = srcs
 OBJ_DIR = objs
 
-SRCS =	main.c \
+SRCS =	env.c \
+		pwd.c \
+		main.c \
+		echo.c \
+		unset.c \
+		export.c \
 		signals.c \
+		utils_env.c \
 		get_tokens.c \
-		classify_tokens.c
+		classify_tokens.c \
 
 OBJS = ${SRCS:.c=.o}
 OBJS := $(addprefix $(OBJ_DIR)/, $(OBJS))
