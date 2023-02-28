@@ -6,7 +6,7 @@
 #    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/02/28 15:30:09 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/02/28 16:07:48 by mcourtoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,19 +20,24 @@ LIBFT = ${LIBFT_PATH}/libft.a
 SRC_DIR = srcs
 OBJ_DIR = objs
 
-SRCS =	env.c \
-		pwd.c \
+SRCS =	\
+		${addprefix builtins/,	\
+			env.c 				\
+			pwd.c 				\
+			echo.c 				\
+			unset.c				\
+			export.c			\
+		}						\
+		${addprefix tokens/,	\
+			get_tokens.c		\
+			expand_tokens.c		\
+			classify_tokens.c	\
+		}						\
 		main.c \
-		echo.c \
-		unset.c \
-		export.c \
 		signals.c \
 		utils_env.c \
-		get_tokens.c \
-		classify_tokens.c \
 		commands.c \
 		utils.c \
-		expand_tokens.c
 
 OBJS = ${SRCS:.c=.o}
 OBJS := $(addprefix $(OBJ_DIR)/, $(OBJS))
@@ -48,7 +53,7 @@ ${NAME}:    libft ${OBJS}
 -include ${OBJ_DIR}/*.d
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
-	mkdir -p ${OBJ_DIR}
+	mkdir -p ${@D}
 	${CC} -g3 ${FLAGS} -I${INC} -c $< -o $@
 
 libft:

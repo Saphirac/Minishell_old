@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/28 15:30:15 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:47:19 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_shell
 	char	**tokens;
 	char	**env;
 	char	*l_hd;
-	char	**tk_hd;
+	char	*stock_hd;
 }	t_shell;
 
 void	free_tab(char **tab);
@@ -53,6 +53,6 @@ char	*add_path(char *str, char *av1, char c);
 char	*find_apath(char **env);
 
 // Heredoc
-char	**tokens_tab_hd(t_shell *shell, int i)
+char	**tokens_tab_hd(t_shell *shell, int i);
 
 #endif

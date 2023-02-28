@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:32:38 by maparigi          #+#    #+#             */
-/*   Updated: 2023/02/28 05:00:03 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:48:34 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ char	**stock_hd(t_shell *shell)
 		write(STDOUT_FILENO, "\nminishell $> ", 14);
 	if (count_tokens(shell->l_hd) > 0)
 	{
-		shell->tk_hd = tokens_tab_hd(shell, 0);
-		ft_free(shell->tk_hd);
+		shell->stock_hd = stock_hd(shell);
+		ft_free(shell->stock_hd);
 	}
 	free(shell->l_hd)
 }
