@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/28 04:38:32 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:31:02 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	prompt(t_shell *shell)
 int	main(int ac, char **av, char **env)
 {
 	t_shell	shell;
+	char	**new_env;
 
 	(void)ac;
 	(void)av;

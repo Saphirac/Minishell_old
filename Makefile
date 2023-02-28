@@ -6,7 +6,7 @@
 #    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/02/22 00:07:21 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/02/28 15:30:09 by mcourtoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,14 @@ LIBFT = ${LIBFT_PATH}/libft.a
 SRC_DIR = srcs
 OBJ_DIR = objs
 
-SRCS =	main.c \
+SRCS =	env.c \
+		pwd.c \
+		main.c \
+		echo.c \
+		unset.c \
+		export.c \
 		signals.c \
+		utils_env.c \
 		get_tokens.c \
 		classify_tokens.c \
 		commands.c \

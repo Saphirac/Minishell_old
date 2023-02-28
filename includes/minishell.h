@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/28 04:50:29 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:30:15 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_H
 
 # include "libft.h"
+# include "builtins.h"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -32,6 +33,7 @@ typedef struct s_shell
 	char	**tk_hd;
 }	t_shell;
 
+void	free_tab(char **tab);
 void	handle_signal(int sig);
 void	signal_handle_interactive(void);
 void	signal_handle_non_interactive(void);
