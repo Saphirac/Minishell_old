@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/22 00:03:47 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/28 04:50:29 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_shell
 	char	*line;
 	char	**tokens;
 	char	**env;
+	char	*l_hd;
+	char	**tk_hd;
 }	t_shell;
 
 void	handle_signal(int sig);
@@ -47,5 +49,8 @@ void	ft_free(char **tab);
 char	*access_path(char **paths, char *cmd);
 char	*add_path(char *str, char *av1, char c);
 char	*find_apath(char **env);
+
+// Heredoc
+char	**tokens_tab_hd(t_shell *shell, int i)
 
 #endif

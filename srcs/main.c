@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:48:12 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/22 00:39:02 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/28 04:38:32 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**mini_env(void)
 
 void	prompt(t_shell *shell)
 {
-	char	*tmp;
+	//char	*tmp;
 
 	shell->line = readline("minishell $> ");
 	if (!shell->line)
@@ -52,15 +52,19 @@ void	prompt(t_shell *shell)
 		write(STDOUT_FILENO, "exit\n", 5);
 		exit(EXIT_FAILURE);
 	}
+	if (shell->line[0] == '\n')
+		write(STDOUT_FILENO, "\nminishell $> ", 14);
 	if (ft_strlen(shell->line))
 		add_history(shell->line);
 	if (count_tokens(shell->line) > 0)
+	{
 		shell->tokens = tokens_tab(shell, 0);
-	tmp = search_env(shell->env, shell->tokens[1]);
-	if (tmp)
-		printf("%s\n", expand_dollar(shell->tokens[1], tmp));
-	ft_free(shell->tokens);
-	free(tmp);
+		ft_free(shell->tokens);
+	}
+	//tmp = search_env(shell->env, shell->tokens[1]);
+	//if (tmp)
+	//	printf("%s\n", expand_dollar(shell->tokens[1], tmp));
+	//free(tmp);
 	free(shell->line);
 }
 

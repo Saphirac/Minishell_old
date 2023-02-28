@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:32:38 by maparigi          #+#    #+#             */
-/*   Updated: 2023/02/22 00:38:51 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/28 05:00:03 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,24 @@ void	find_hd(char *arg_l)
 			printf("heredoc : %s\n", arg_l + i);
 	}
 	return ;
+}
+
+char	**stock_hd(t_shell *shell)
+{
+	shell->l_hd = readline("heredoc> ");
+	if (!shell->l_hd)
+	{
+		write(STDOUT_FILENO, "exit\n", 5);
+		exit(EXIT_FAILURE);
+	}
+	if (shell->l_hd[0] == '\n')
+		write(STDOUT_FILENO, "\nminishell $> ", 14);
+	if (count_tokens(shell->l_hd) > 0)
+	{
+		shell->tk_hd = tokens_tab_hd(shell, 0);
+		ft_free(shell->tk_hd);
+	}
+	free(shell->l_hd)
 }
 
 /*******************************************/

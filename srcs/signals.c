@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 00:53:48 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/01/16 05:18:51 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/02/28 04:53:59 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,5 @@ void	signal_handle_non_interactive(void)
 	signal(SIGTTIN, SIG_IGN);
 	signal(SIGTTOU, SIG_IGN);
 }
+
+//void	signal_handle_heredoc(void)
