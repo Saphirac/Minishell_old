@@ -25,3 +25,4 @@ char	*stock_hd(t_shell *shell)
 		return (shell->stock_hd);
 	}
 }
+
