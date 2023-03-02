@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 00:53:48 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/03/01 15:54:20 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/03/02 03:24:44 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,18 @@ void	handle_signal_2(int sig)
 	{
 		write(STDOUT_FILENO, "Quit\n", 5);
 		g_exit_code = 128 + sig;
+	}
+}
+
+void	handle_signal_3(int sig)
+{
+	if (sig == SIGINT)
+	{
+		write(STDOUT_FILENO, "\nminishell $> ", 14);
+	}
+	if (sig == SIGTSTP)
+	{
+		write(STDOUT_FILENO, "Here-document at line 2 delimited by end-of-file\n", 50);
 	}
 }
 

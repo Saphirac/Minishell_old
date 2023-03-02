@@ -15,14 +15,9 @@
 char	*stock_hd(t_shell *shell)
 {
 	if (!shell->stock_hd && shell->line)
-	{
 		shell->stock_hd = ft_strdup(shell->line);
-		return (shell->stock_hd);
-	}
 	if (shell->stock_hd && shell->line)
-	{
 		shell->stock_hd = ft_strjoin(shell->stock_hd, shell->line);
-		return (shell->stock_hd);
-	}
+	return (shell->stock_hd);
 }
 

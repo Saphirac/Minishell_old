@@ -6,7 +6,7 @@
 #    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:46:31 by mcourtoi          #+#    #+#              #
-#    Updated: 2023/02/28 16:07:48 by mcourtoi         ###   ########.fr        #
+#    Updated: 2023/03/02 03:26:30 by mcourtoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,10 @@ SRCS =	\
 			get_tokens.c		\
 			expand_tokens.c		\
 			classify_tokens.c	\
+		}						\
+		${addprefix here_doc/,	\
+			here_doc.c			\
+			here_tokens.c		\
 		}						\
 		main.c \
 		signals.c \

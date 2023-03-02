@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/02/28 16:47:19 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/03/02 04:02:33 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <stdio.h>
 # include <signal.h>
 # include <libft.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
 extern int	g_exit_code;
 
@@ -53,6 +55,7 @@ char	*add_path(char *str, char *av1, char c);
 char	*find_apath(char **env);
 
 // Heredoc
-char	**tokens_tab_hd(t_shell *shell, int i);
+char	*stock_hd(t_shell *shell);
+void	signal_handle_heredoc(void);
 
 #endif
