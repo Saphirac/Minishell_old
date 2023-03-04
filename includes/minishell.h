@@ -6,7 +6,7 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:55:28 by mcourtoi          #+#    #+#             */
-/*   Updated: 2023/03/02 04:02:33 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:18:07 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ char	*find_apath(char **env);
 // Heredoc
 char	*stock_hd(t_shell *shell);
 void	signal_handle_heredoc(void);
+char	*get_hd(t_shell *shell, char *stop_signal);
 
 #endif
